@@ -1,0 +1,83 @@
+body
+{
+font-size:80%;
+font-family:"Helvetica",arial, 'sans serif'; 
+/* background-image: url('always.jpeg');   */
+background-color: white;
+color: #116da1; /* Modif 20130718*/ 
+margin:10px;
+/*background-color:#AA6830;*/
+/* background-image: url('accueil_bg.png');  */
+}
+a:link {color: black}
+a:visited {color: blue   }
+a:active {color: purple}
+a:hover {color: #ff872f} /* Modif 20130718*/ 
+
+a.linkEvaluer:link {color: blue}
+a.linkEvaluer:hover {color: red}
+
+#header{background: #ccc; padding: 20px; width: 50%; }
+#header h1 { margin: 0;  }
+
+#container {margin: 0 auto; width: 1000px;}
+#content-container {float: left; width: 1000px;	background: #fff }
+#content {color::#f46d00; float: ; background: #ececec;	width: 90%;	padding: 10px 0; margin: 0 0 0 0px;} /* Modif 20130718*/ 
+table { border:1px solid #116da1; background: #a9b8c2 ; margin:auto;} /* Modif 20130718*/ 
+th {border:1px solid #116da1; padding:1px; background-color:#ececec;} /* Modif 20130718*/ 
+td {font-size:90%; border:1px solid #116da1; padding: 7px; background-color:#c8d1d7} /* Modif 20130718*/ 
+
+#content h2 { margin: 0; }
+
+#navigation{ float: left; width: 1000px; background: #116da1;}
+#navigation ul{	margin: 0; padding: 0;}
+#navigation ul li {list-style-type: none; display: inline;}
+#navigation li a {display: block; float: left; padding: 5px 10px;	color: #fff; text-decoration: none;	border-right: 1px solid #fff;}
+#navigation li a:hover { color:#116da1; background: #ff872f; } /* Modif 20130718*/ 
+#section-navigation {float: left; width: 160px;	padding: 20px 0;	margin: 0 20px;	display: inline;}
+#section-navigation ul {margin: 0; padding: 0;}
+#section-navigation ul li {margin: 0 0 1em; padding: 0;	list-style-type: none;}
+#aside {float: right; width: 200px; padding: 20px 0; margin: 0 20px 0 0; display: ;}
+#userinfo {float: left;	width: 600px; padding: 20px 0;	margin: 0 20px 0 0; }
+#aside h3 { margin: 0; }
+#footer {clear: left; text-align: left; padding: 10px;	height: 1%; }
+#statut {color: black }
+#detail_stats_table { }
+#colonne-droite { 
+	float: right;	
+	color: black; 
+	width: 250px;
+	/*background-color:#AA6830; */
+	/* background-image: url('always.jpeg */
+	background-color: #ececec; /* Modif 2013/07/18 */	 
+}
+#userlinks{ float: ; width: 100%; background: #ccc;}
+#userlinks2{ float: ; width: 100%; background: #ccc;}
+#form_ajout_prop {  }
+
+#login { }
+#register { }
+
+.code_A{ background: #01B400 ; color: black; }
+.code_a{ background: #51FF50 ; color: black;}
+.code_O{ background: #FFFFFF;  color: black; }
+.code_d{ background: #FE504F ; color: black; }
+.code_D{ background: #B40001 ; color: white;}
+.code_X{ background: ;         color: ;} 
+
+
+ fieldset {  
+ width:220px;  
+ font-size:75%;
+ font-family:"Helvetica",arial,'sans serif'; 
+ }  
+ legend {  
+ width:100px;  
+ text-align:center;  
+ background:#DDE7F0;  
+ border:solid 1px;  
+ margin:1px;  
+ font-weight:bold;  
+ color:#0000FF;  
+ }  
+
