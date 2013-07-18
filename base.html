@@ -1,0 +1,192 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+{% load evaluations_tags %}
+
+<html>
+	<head>
+		<meta http-equiv="Content-Style-Type" content="text/css" /> 
+		
+		<link rel="stylesheet" type="text/css" href="/site_media/redico.css" />
+
+		<title>{%  block title %}Le Redico {% endblock%}</title>
+		<meta name="google-translate-customization" content="469a424623ae56aa-db0099781ecd6f9f-g860f22911a14c67b-1d"></meta>
+	</head>
+	
+	<body>
+		<div id="container">
+			<div class="header">
+				{% block header %}
+					<h1>Le Redico </h1>
+				{% endblock %}
+			</div>
+
+			<div id="navigation">
+				<ul>
+ 				<li><a href="/joueurs/">Joueurs</a></li>
+				<li><a href="/redico/">Liste des Redicos</a></li>
+				{% if user.is_authenticated %}
+					<li><a href="/accounts/logout/">Se déloguer</a></li>
+				{% else %}
+					<li><a href="/accounts/register/">S'enregistrer</a></li>
+					<li><a href="/accounts/login/">Se loguer</a></li>
+				{% endif %}
+					<li><a href="/comment_jouer/">Comment jouer</a></li>
+
+				</ul>
+			</div>	
+			
+			<div id="colonne-droite">
+				{% block colonne-droite %}
+					{% block alert %}
+					{% endblock alert %}
+
+				{% block statut %}
+				<div id="statut">
+					<table border="1" width = "90%" >	
+						<br /><caption><strong>Statut à {% now "Y-m-d H:i" %}</strong></caption> 
+						{% if user.is_authenticated %}
+								<tr><td>{{ user }} est logué.</td></tr>  
+								<td><a href="/accounts/password/change/">Changer votre mot de passe.</a></td>
+								
+						{% else %}
+								<tr><td>Vous n'êtes pas logué.</td></tr>  
+						{% endif %}
+					</table>
+				</div>	
+					{% endblock statut %}
+
+
+				<div id="login">
+						{% block login %}
+							{#{% include "registration/login.html" %}#}
+						{% endblock login %}	
+
+				</div>	
+
+				<div id="change_password">
+						{% block change_password %}
+							{#{% include "registration/password-change_form.html" %}#}
+						{% endblock change_password %}	
+
+				</div>	
+
+
+				<div id="register">
+						{% block register %}
+							{#{% include "registration/registration_form.html" %}#}
+						{% endblock register %}	
+
+				</div>	
+
+				<div id="dernieres-props">
+					{% block dernieres-props %}
+						<table border="1" width = "90%">
+						<br /><caption><strong>Dernières propositions</strong></caption>
+							{% for p in dernieres_props %}
+							
+							<tr>
+								<td><a href="/redico/{{ p.redico__id }}#{{ p.sequence }}">
+								[{{ p.auteur__username|slice:":4"}}] {{ p.texte|truncatewords:10|safe|urlize|removetags:"span"}}</a></td>
+							</tr>
+							{% endfor %}
+						</table>
+					{% endblock dernieres-props %}
+				</div>
+
+				<div id="dernieres-evals">
+					{% block dernieres-evals %}
+						<table border="1" width = "90%">
+						<br /><caption><strong>Dernières évaluations</strong></caption>
+							{% for e in dernieres_evals %}
+							
+							<tr>
+								<td><a href="/redico/{{ e.proposition__redico__id }}#{{ e.proposition__sequence }}">
+									[{{ e.joueur__username|slice:":4"}} = {{ e.eval}}%] {{ e.proposition__texte|truncatewords:6|safe|urlize|removetags:"span" }} 
+									 
+									</a></td>
+								
+							</tr>
+							{% endfor %}
+						</table>
+					{% endblock dernieres-evals %}
+				</div>
+
+
+
+				<div id="joueurs-actifs">
+					{% block joueurs-actifs %}
+
+						<table border="1" width = "90%">
+						<br /><caption><strong>Joueurs les plus actifs</strong></caption>
+							{% for j in joueurs_actifs %}
+							<tr>
+								<td><a href="/joueur/{{ j.joueur__id }}/"> {{ j.joueur__username }}</a></td>
+							<td>{{ j.cnt }}</td> 
+							</tr>
+							{% endfor %}
+						</table>
+					{% endblock joueurs-actifs %}
+				</div>
+
+
+
+<!--
+				<div id="redicos-importants">
+					{% block redicos-importants %}
+
+					<ul>
+						<table border="1" width = 90%>
+						<caption>Redicos les plus gros</caption>
+							{% for r in redicos_importants %}
+							<tr>
+								<td><a href="/redico/{{ r.redico__id }}/"> {{ r.redico__titre|truncatewords:5 }}</a></td>
+							<td>{{ r.cnt }}</td> 
+							</tr>
+							{% endfor %}
+						</table>
+					</ul>
+					{% endblock redicos-importants %}
+
+				</div>
+
+-->	
+
+				<div id="redicos-dynamiques">
+					{% block redicos-dynamiques %}
+						<table border="1" width = "90%">
+						<br /><caption><strong>Redicos les plus actifs</strong></caption>
+							{% for r in redicos_dynamiques %}
+							<tr>
+								<td><a href="/redico/{{ r.redico__id }}/"> {{ r.redico__titre|truncatewords:5 }}</a></td>
+							<td>{{ r.cnt }}</td> 
+							</tr>
+							{% endfor %}
+						</table>
+					{% endblock redicos-dynamiques %}
+				</div>
+
+				<div id="les-lois">
+					{% block les-lois %}
+						{% include "les_lois.html" %}
+					{% endblock les-lois %}
+				</div>
+				{% endblock colonne-droite %}
+
+			</div>
+
+			<div id="content">
+				{% block content %}  {% endblock %}
+			</div>
+			
+			{% include "footer.html" %}
+<!--
+			<div class="lapage">
+				{% block lapage %} 
+				{% endblock lapage %}
+			</div>
+-->
+		</div>
+	</body>
+</html>
+
+
